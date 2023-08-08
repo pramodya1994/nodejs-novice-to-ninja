@@ -1,5 +1,7 @@
 # Node.js: Novice to Ninja
 [Course link](https://learning.oreilly.com/library/view/node-js-novice-to/9781098141004/Text/ultimatenode1-frontmatter.html)
+
+## 1. What's Node.js?
 * JS runtime
 * Use to create CLI tools, web servers etc
 * 2005: ECMA script 5, standard support for most of the browsers
@@ -26,4 +28,4 @@ Why learn NodeJs?
 * Extendable
   * npm: largest in the world
 * opensource
-* 
+
