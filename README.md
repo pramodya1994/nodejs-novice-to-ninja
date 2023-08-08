@@ -94,3 +94,35 @@ nodemon webhello.js
   * What would happen if you wanted to improve performance by launching two or more instances of the same app—perhaps on other servers
   * The `userCount` value would be different
 
+## 4. How to Debug Node.js Scripts
+
+Linters: ESLint, JSLint, JSHint
+
+Code editor plugins are better: ESLint for VS code
+
+### Debugging Env variables
+```bash
+NODE_ENV=development
+```
+```js
+// running in development mode?
+const DEVMODE = (process.env.NODE_ENV !== 'production');
+
+if (DEVMODE) {
+  console.log('application started in development mode');
+}
+```
+
+### Debugging cmd line options
+`node --trace-warnings index.js`: outputs stack traces when promises don’t resolve or reject as expected
+
+### Console debugging
+`.log(msg)`
+
+`.log('%j', obj)`: output an object as a compact JSON string
+
+`.table(obj)`: arrays in tabular format
+
+### Debugging with `util.debuglog` and 3rd party log modules
+
+### Debugging Node.js Apps with Chrome
