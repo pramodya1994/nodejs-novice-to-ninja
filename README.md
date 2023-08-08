@@ -29,3 +29,29 @@ Why learn NodeJs?
   * npm: largest in the world
 * opensource
 
+## 2. Install Node.js
+
+## 3. Your first NodeJS application
+console app
+
+Run hello.js
+```bash
+node hello.js
+```
+
+First line
+
+`#!/usr/bin/env node`
+* shebang line
+* optional when running using bash command
+* Need it when running as `./hello.js`
+
+```bash
+node hello.js Craig
+```
+* ele 0: node command
+* ele 1: script
+* ele 2: first argument
+
+
+
