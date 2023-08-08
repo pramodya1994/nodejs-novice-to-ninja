@@ -32,10 +32,12 @@ Why learn NodeJs?
 ## 2. Install Node.js
 
 ## 3. Your first NodeJS application
-console app
+### Console app
 
 Run hello.js
 ```bash
+mkdir console
+cd console
 node hello.js
 ```
 
@@ -53,5 +55,39 @@ node hello.js Craig
 * ele 1: script
 * ele 2: first argument
 
+### Web server app
+PHP web server
+NodeJS web server
 
+```bash
+mkdir server
+cd server
+node webhello.js
+Server running at http://localhost:3000/
+```
+
+Try accessing http://localhost:3000/, http://localhost:3000/abc/, or http://localhost:3000/abc/123/: 
+every page is the same.
+
+Restarting Node.js Applications with Nodemon
+```bash
+npm install -g nodemon
+nodemon webhello.js
+
+# code change
+[nodemon] restarting due to changes...
+[nodemon] starting `node webhello.js`
+```
+
+### Web Application Considerations
+* Easy to start no db connections required
+* Scaling can be difficult
+  * More RAM/CPU to Apache/PHP will improve response time
+  * NodeJS still runs on a single CPU, solution is clustering, pm2, docker containers by launching multiple instances
+* Not efficient serving static files
+  * Production: Nginx server to serve static files, direct request to node app when needed
+* Write stateless applications
+  * variable `userCount`
+  * What would happen if you wanted to improve performance by launching two or more instances of the same app—perhaps on other servers
+  * The `userCount` value would be different
 
