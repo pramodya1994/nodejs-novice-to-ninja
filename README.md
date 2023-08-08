@@ -57,7 +57,10 @@ node hello.js Craig
 
 ### Web server app
 PHP web server
+![Alt text](img/php-web-server.png)
+
 NodeJS web server
+![Alt text](img/node-web-server.png)
 
 ```bash
 mkdir server
