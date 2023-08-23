@@ -126,3 +126,56 @@ if (DEVMODE) {
 ### Debugging with `util.debuglog` and 3rd party log modules
 
 ### Debugging Node.js Apps with Chrome
+
+## 5. Getting started with Express
+
+* NodeJs web server framework
+* URL routing, parsing data, set HTTP headers
+
+```bash
+mkdir express
+cd express
+npm init
+npm install express
+```
+* `package.json`: 
+  * dependencies: need to run app (eg: express)
+  * dev-dependencies: only required for build tools
+* `package.lock.json`: installed modules
+* `node_modules`: contains all modules
+
+### Express entry script
+
+Routing: which functions execute when receives a request for a URL
+
+### Serve Static Files
+`static` directory
+
+Express only checks static files if request cannot be fulfilled by routes, there's a config to change this
+
+However, use Nginx to server static files and bypass NodeJs processing is better approach
+
+### Express Middleware Functions
+`app.use()`: Middleware function
+
+Middleware functions runs in the sequence defines in the code:
+* run code on every request
+* manipulate request & response objects
+* terminate a response
+* call next middleware function
+
+All middleware functions receive 3 args:
+* request
+* response
+* next: callback that passes control to the next middleware function
+
+```js
+// log every request to the terminal
+app.use((req, res, next) => {
+  console.log(req.url);
+  next();
+});
+```
+This should place before routing code
+
+### Define working directories
