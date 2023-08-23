@@ -206,3 +206,49 @@ This should place before routing code
 * path parameters: parsing routes to extract values
 * HTTP methods: using GET, POST, DELETE, PUT and so on
 * route handlers: grouping related route handler functions into one file
+
+#### 1. Path expressions
+
+```ts
+// another route
+app.get('/hello/', (req, res) => {
+    res.send('Hello again!');
+});
+```
+
+Default, case is ignored, to avoid: `app.set('case sensitive routing', true)`
+
+Ignore closing slashes, `/hello` and `/hello/`, to avoid: `app.set('strict routing', true)`
+
+As well as exact routes, you can define regular expression patterns to match a range of URLs
+
+#### 2. Path parameters
+
+`/author/Craig-Buckler/book/Node.js`
+
+```ts
+// return a value for a user
+app.get('/author/:name/book/:bookName', (req, res, next) => {
+
+    console.log(`author: ${req.params.name}`);      // "Craig-Buckler"
+    console.log(`  book: ${req.params.bookName}`);  // "Node.js"
+
+    next();
+
+});
+```
+
+#### 3. HTTP route methods
+
+`app.get()`, `app.post()`, `app.put()`, `app.delete()`
+
+`app.all()` handles all HTTP methods to a specific route. The function can examine the `req.method` property to
+determine which HTTP method was used.
+
+#### 4. Route handler
+
+Defining all route handler functions in the entry index.js script becomes impractical as your application grows in
+complexity. A better option is to create route handling middleware in separate files with related functionality.
+
+Eg: helloRouter
+

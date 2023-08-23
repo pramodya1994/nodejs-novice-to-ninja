@@ -33,10 +33,15 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-// another route
-app.get('/hello/', (req, res) => {
-    res.send('Hello again!');
-});
+// // another route
+// app.get('/hello/', (req, res) => {
+//     res.send('Hello again!');
+// });
+
+// /hello/ route
+import { helloRouter } from './routes/hello.js';
+app.use('/hello', helloRouter);
+
 
 // serve static assets
 app.use(express.static('static'));
