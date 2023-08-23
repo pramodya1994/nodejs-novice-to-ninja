@@ -1,40 +1,46 @@
 # Node.js: Novice to Ninja
+
 [Course link](https://learning.oreilly.com/library/view/node-js-novice-to/9781098141004/Text/ultimatenode1-frontmatter.html)
 
 ## 1. What's Node.js?
+
 * JS runtime
 * Use to create CLI tools, web servers etc
 * 2005: ECMA script 5, standard support for most of the browsers
 * npm - Node package manager
 
 Why learn JS?
+
 * Most used language in GitHub
 * Ranked highly by developers
 
 Why learn NodeJs?
+
 * it's JS
 * Fast
-  * non-blocking
-  * event-driven
-  * runs on a single processing thread, long running tasks (db query) are processed asynchrnously
-    * Doesn't halt execution
-    * Task runs in the background
-    * NodeJS continues the next command
-    * when task is complete, return data to a callback function
+    * non-blocking
+    * event-driven
+    * runs on a single processing thread, long running tasks (db query) are processed asynchrnously
+        * Doesn't halt execution
+        * Task runs in the background
+        * NodeJS continues the next command
+        * when task is complete, return data to a callback function
 * Real time
-  * live chat, multiplayer games
+    * live chat, multiplayer games
 * Lightweight
-  * runtime is small & cross-platform
+    * runtime is small & cross-platform
 * Extendable
-  * npm: largest in the world
+    * npm: largest in the world
 * opensource
 
 ## 2. Install Node.js
 
 ## 3. Your first NodeJS application
+
 ### Console app
 
 Run hello.js
+
 ```bash
 mkdir console
 cd console
@@ -44,6 +50,7 @@ node hello.js
 First line
 
 `#!/usr/bin/env node`
+
 * shebang line
 * optional when running using bash command
 * Need it when running as `./hello.js`
@@ -51,11 +58,13 @@ First line
 ```bash
 node hello.js Craig
 ```
+
 * ele 0: node command
 * ele 1: script
 * ele 2: first argument
 
 ### Web server app
+
 PHP web server
 ![Alt text](img/php-web-server.png)
 
@@ -69,10 +78,11 @@ node webhello.js
 Server running at http://localhost:3000/
 ```
 
-Try accessing http://localhost:3000/, http://localhost:3000/abc/, or http://localhost:3000/abc/123/: 
+Try accessing http://localhost:3000/, http://localhost:3000/abc/, or http://localhost:3000/abc/123/:
 every page is the same.
 
 Restarting Node.js Applications with Nodemon
+
 ```bash
 npm install -g nodemon
 nodemon webhello.js
@@ -83,16 +93,18 @@ nodemon webhello.js
 ```
 
 ### Web Application Considerations
+
 * Easy to start no db connections required
 * Scaling can be difficult
-  * More RAM/CPU to Apache/PHP will improve response time
-  * NodeJS still runs on a single CPU, solution is clustering, pm2, docker containers by launching multiple instances
+    * More RAM/CPU to Apache/PHP will improve response time
+    * NodeJS still runs on a single CPU, solution is clustering, pm2, docker containers by launching multiple instances
 * Not efficient serving static files
-  * Production: Nginx server to serve static files, direct request to node app when needed
+    * Production: Nginx server to serve static files, direct request to node app when needed
 * Write stateless applications
-  * variable `userCount`
-  * What would happen if you wanted to improve performance by launching two or more instances of the same app—perhaps on other servers
-  * The `userCount` value would be different
+    * variable `userCount`
+    * What would happen if you wanted to improve performance by launching two or more instances of the same app—perhaps
+      on other servers
+    * The `userCount` value would be different
 
 ## 4. How to Debug Node.js Scripts
 
@@ -101,22 +113,26 @@ Linters: ESLint, JSLint, JSHint
 Code editor plugins are better: ESLint for VS code
 
 ### Debugging Env variables
+
 ```bash
 NODE_ENV=development
 ```
+
 ```js
 // running in development mode?
 const DEVMODE = (process.env.NODE_ENV !== 'production');
 
 if (DEVMODE) {
-  console.log('application started in development mode');
+    console.log('application started in development mode');
 }
 ```
 
 ### Debugging cmd line options
+
 `node --trace-warnings index.js`: outputs stack traces when promises don’t resolve or reject as expected
 
 ### Console debugging
+
 `.log(msg)`
 
 `.log('%j', obj)`: output an object as a compact JSON string
@@ -138,9 +154,10 @@ cd express
 npm init
 npm install express
 ```
-* `package.json`: 
-  * dependencies: need to run app (eg: express)
-  * dev-dependencies: only required for build tools
+
+* `package.json`:
+    * dependencies: need to run app (eg: express)
+    * dev-dependencies: only required for build tools
 * `package.lock.json`: installed modules
 * `node_modules`: contains all modules
 
@@ -149,6 +166,7 @@ npm install express
 Routing: which functions execute when receives a request for a URL
 
 ### Serve Static Files
+
 `static` directory
 
 Express only checks static files if request cannot be fulfilled by routes, there's a config to change this
@@ -156,15 +174,18 @@ Express only checks static files if request cannot be fulfilled by routes, there
 However, use Nginx to server static files and bypass NodeJs processing is better approach
 
 ### Express Middleware Functions
+
 `app.use()`: Middleware function
 
 Middleware functions runs in the sequence defines in the code:
+
 * run code on every request
 * manipulate request & response objects
 * terminate a response
 * call next middleware function
 
 All middleware functions receive 3 args:
+
 * request
 * response
 * next: callback that passes control to the next middleware function
@@ -172,10 +193,16 @@ All middleware functions receive 3 args:
 ```js
 // log every request to the terminal
 app.use((req, res, next) => {
-  console.log(req.url);
-  next();
+    console.log(req.url);
+    next();
 });
 ```
+
 This should place before routing code
 
-### Define working directories
+### Advanced Routing
+
+* path expressions: handling many routes with one function
+* path parameters: parsing routes to extract values
+* HTTP methods: using GET, POST, DELETE, PUT and so on
+* route handlers: grouping related route handler functions into one file
