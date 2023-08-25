@@ -252,3 +252,21 @@ complexity. A better option is to create route handling middleware in separate f
 
 Eg: helloRouter
 
+## 6. Processing Form data with Express
+
+User data cannot be trusted, should be sanitized
+
+express-validator: module provides a range of validation and sanitization functions
+
+`http://localhost:3000/?a=1&b=2&c=3`
+
+`Request.query` property
+
+```
+{ 
+  a: 1, 
+  b: 2, 
+  c: 3 
+}
+```
+

@@ -42,6 +42,13 @@ app.get('/', (req, res) => {
 import { helloRouter } from './routes/hello.js';
 app.use('/hello', helloRouter);
 
+// render form
+app.get('/form', (req, res) => {
+    res.render('form', {
+        title: 'Parse HTTP GET data',
+        data: req.query
+    });
+});
 
 // serve static assets
 app.use(express.static('static'));
